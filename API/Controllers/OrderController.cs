@@ -58,11 +58,7 @@ namespace API.Controllers
             {
                 List<Order> OrderList = new List<Order>();
 
-                using StreamReader reader = new("/home/rubem/Downloads/ddd-webapi-master/OnionApp/Persistence/Mock/mock.json");
-                var json = reader.ReadToEnd();
-                List<OrderFileInput> Orders = JsonConvert.DeserializeObject<List<OrderFileInput>>(json);
-
-                foreach(var o in Orders)
+                foreach(var o in OrderFileInput)
                 {
                     OrderList.Add(new Order() 
                     {
@@ -75,7 +71,7 @@ namespace API.Controllers
                     });
                 }
 
-                var result = await _orderSerivice.CalculateAndDeliveryDate(OrderList);
+                var result = await _orderSerivice.CalculatePriceAndDeliveryDate(OrderList);
 
                 return Ok(result);
 
@@ -85,20 +81,14 @@ namespace API.Controllers
             }
         }
 
-        [HttpPost("/Post")]
+        [HttpPost("/ApproveOrders")]
         [AllowAnonymous]
-        public async Task<IActionResult> ApproveOrders(List<Order> Order)
+        public async Task<IActionResult> ApproveOrders(List<Order> Orders)
 
         {
             try 
             {
-                using StreamReader reader = new("/home/rubem/Downloads/ddd-webapi-master/OnionApp/Persistence/Mock/mock-newOrders.json");
-                var json = reader.ReadToEnd();
-
-                List<Order> Orders = JsonConvert.DeserializeObject<List<Order>>(json);
-
                 var result = await _orderSerivice.PostOrder(Orders);
-
                 return Ok();
 
             } catch (Exception ex)
@@ -107,7 +97,7 @@ namespace API.Controllers
             }
         }
 
-        [HttpGet("/Get")]
+        [HttpGet]
         [AllowAnonymous]
         public async Task<List<Order>> GetOrders()
         {

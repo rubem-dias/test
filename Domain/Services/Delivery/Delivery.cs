@@ -86,16 +86,22 @@ namespace Domain.Services.Delivery
             return UtilDaysCount;
         }
 
-        public List<Order> OrdersWithDeliveryDate(List<Order> Orders)
+        public List<Order> OrdersWithDeliveryDate(List<Order> Orders, List<CepResponse> Cep)
         {
             foreach(var order in Orders)
             {
+                string ZipCode = Cep
+                    .Where(x => x.Cep.Replace("-", string.Empty) == order.ZipCode)
+                    .Select(x => x.Cep)
+                    .First();
+
                 int DeliveryLocation = DeliveryDayByLocation(order.ZipCode);
                 int DeliveryProduct = DeliveryByProduct(order.Product);
                 int DeliveryDate = DeliveryByDate(order.DateOrdered);
 
                 int TotalDays = DeliveryLocation + DeliveryProduct + DeliveryDate;
 
+                order.ZipCode = ZipCode;
                 order.EstimatedDelivery = order.DateOrdered.AddDays(TotalDays);
             }
 

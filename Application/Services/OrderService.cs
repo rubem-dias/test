@@ -49,23 +49,17 @@ namespace Application.Services
                 });
             }
 
-            string DataToJson = JsonSerializer.Serialize(OrderInputs);
-            File.WriteAllText(@"/home/rubem/Downloads/ddd-webapi-master/OnionApp/Persistence/Mock/mock.json", DataToJson);
-
             return OrderInputs;
         }
 
-        public async Task<List<Order>>  CalculateAndDeliveryDate(List<Order> Orders)
+        public async Task<List<Order>>  CalculatePriceAndDeliveryDate(List<Order> Orders)
         {
            var CompleteAddress = await _viaCep.GetAddress(Orders.Select(x => x.ZipCode).ToList());
            var Products = _context.Product.ToList();
         
 
            var OrderChangedPrice = _budget.NewOrderValues(Orders, CompleteAddress, Products);
-           var OrdersWithDeliveryAndPrice = _delivery.OrdersWithDeliveryDate(OrderChangedPrice);
-
-            string DataToJson = JsonSerializer.Serialize(OrdersWithDeliveryAndPrice);
-            File.WriteAllText(@"/home/rubem/Downloads/ddd-webapi-master/OnionApp/Persistence/Mock/mock-newOrders.json", DataToJson);
+           var OrdersWithDeliveryAndPrice = _delivery.OrdersWithDeliveryDate(OrderChangedPrice, CompleteAddress);
 
            return OrdersWithDeliveryAndPrice;
         }

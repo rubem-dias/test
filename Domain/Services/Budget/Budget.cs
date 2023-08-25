@@ -73,7 +73,7 @@ namespace Domain.Services.Budget
         {
             foreach(var order in OrderList)
             {
-                var cep = Cep.Where(x => x.Cep == order.ZipCode).FirstOrDefault();
+                var cep = Cep.Where(x => x.Cep.Replace("-", string.Empty) == order.ZipCode).FirstOrDefault();
                 var product = Products.Where(x => x.Name == order.Product).FirstOrDefault();
 
                 var MultiplierByLocation = DeliveryDistanceMultiplier(order, cep);

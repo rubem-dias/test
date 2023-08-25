@@ -6241,11 +6241,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/rubem/Downloads/ddd-webapi-master/OnionApp/Application/Application.csproj",
+      "projectUniqueName": "/home/rubem/Downloads/OnionApp/OnionApp/Application/Application.csproj",
       "projectName": "Application",
-      "projectPath": "/home/rubem/Downloads/ddd-webapi-master/OnionApp/Application/Application.csproj",
+      "projectPath": "/home/rubem/Downloads/OnionApp/OnionApp/Application/Application.csproj",
       "packagesPath": "/home/rubem/.nuget/packages/",
-      "outputPath": "/home/rubem/Downloads/ddd-webapi-master/OnionApp/Application/obj/",
+      "outputPath": "/home/rubem/Downloads/OnionApp/OnionApp/Application/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/rubem/.nuget/NuGet/NuGet.Config"
@@ -6260,11 +6260,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "/home/rubem/Downloads/ddd-webapi-master/OnionApp/Domain/Domain.csproj": {
-              "projectPath": "/home/rubem/Downloads/ddd-webapi-master/OnionApp/Domain/Domain.csproj"
+            "/home/rubem/Downloads/OnionApp/OnionApp/Domain/Domain.csproj": {
+              "projectPath": "/home/rubem/Downloads/OnionApp/OnionApp/Domain/Domain.csproj"
             },
-            "/home/rubem/Downloads/ddd-webapi-master/OnionApp/Persistence/Persistence.csproj": {
-              "projectPath": "/home/rubem/Downloads/ddd-webapi-master/OnionApp/Persistence/Persistence.csproj"
+            "/home/rubem/Downloads/OnionApp/OnionApp/Persistence/Persistence.csproj": {
+              "projectPath": "/home/rubem/Downloads/OnionApp/OnionApp/Persistence/Persistence.csproj"
             }
           }
         }

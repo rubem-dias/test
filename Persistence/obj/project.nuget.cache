@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "5YBsOg28K4a4gl6wZMvo6HxQo9q3wSeUVm+hxABXY1+veFSuDPcVkEm8M4zD7m3Jp1SPbLCekxm4vRRa/BeSWg==",
+  "dgSpecHash": "2zyxwscn1eeTNfQ8lbEFmfEucMRijSqVeT62gKIGLltO9ZIRs2b0HhCwIhcbSWBrmQklTCRDIb9S6DDRAaBqmA==",
   "success": true,
-  "projectFilePath": "/home/rubem/Downloads/ddd-webapi-master/OnionApp/Persistence/Persistence.csproj",
+  "projectFilePath": "/home/rubem/Downloads/OnionApp/OnionApp/Persistence/Persistence.csproj",
   "expectedPackageFiles": [
     "/home/rubem/.nuget/packages/automapper/12.0.1/automapper.12.0.1.nupkg.sha512",
     "/home/rubem/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/12.0.1/automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

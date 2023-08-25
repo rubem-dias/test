@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "MW2qaSRoiCiENbKDYvz2FkrBVx0SP97lWCmWo7rrXRvNL6OCWYK/xvMqVrAZ0HN9o4GcTskrHidu7LKtSYkouA==",
+  "dgSpecHash": "hSNaHbmvDZDhq97CY/tFPjTACJYqA9d0HTA7J2MFGQz2hjYC6zWUHtGLudP1cvlibsBYfrvmaJps6D0kwpqvGA==",
   "success": true,
-  "projectFilePath": "/home/rubem/Downloads/ddd-webapi-master/OnionApp/Domain/Domain.csproj",
+  "projectFilePath": "/home/rubem/Downloads/OnionApp/OnionApp/Domain/Domain.csproj",
   "expectedPackageFiles": [
     "/home/rubem/.nuget/packages/automapper/12.0.1/automapper.12.0.1.nupkg.sha512",
     "/home/rubem/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/12.0.1/automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

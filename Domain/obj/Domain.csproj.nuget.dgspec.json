@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/rubem/Downloads/ddd-webapi-master/OnionApp/Domain/Domain.csproj": {}
+    "/home/rubem/Downloads/OnionApp/OnionApp/Domain/Domain.csproj": {}
   },
   "projects": {
-    "/home/rubem/Downloads/ddd-webapi-master/OnionApp/Domain/Domain.csproj": {
+    "/home/rubem/Downloads/OnionApp/OnionApp/Domain/Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/rubem/Downloads/ddd-webapi-master/OnionApp/Domain/Domain.csproj",
+        "projectUniqueName": "/home/rubem/Downloads/OnionApp/OnionApp/Domain/Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "/home/rubem/Downloads/ddd-webapi-master/OnionApp/Domain/Domain.csproj",
+        "projectPath": "/home/rubem/Downloads/OnionApp/OnionApp/Domain/Domain.csproj",
         "packagesPath": "/home/rubem/.nuget/packages/",
-        "outputPath": "/home/rubem/Downloads/ddd-webapi-master/OnionApp/Domain/obj/",
+        "outputPath": "/home/rubem/Downloads/OnionApp/OnionApp/Domain/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/rubem/.nuget/NuGet/NuGet.Config"

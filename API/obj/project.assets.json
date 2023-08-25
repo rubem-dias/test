@@ -6578,11 +6578,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/rubem/Downloads/ddd-webapi-master/OnionApp/API/API.csproj",
+      "projectUniqueName": "/home/rubem/Downloads/OnionApp/OnionApp/API/API.csproj",
       "projectName": "API",
-      "projectPath": "/home/rubem/Downloads/ddd-webapi-master/OnionApp/API/API.csproj",
+      "projectPath": "/home/rubem/Downloads/OnionApp/OnionApp/API/API.csproj",
       "packagesPath": "/home/rubem/.nuget/packages/",
-      "outputPath": "/home/rubem/Downloads/ddd-webapi-master/OnionApp/API/obj/",
+      "outputPath": "/home/rubem/Downloads/OnionApp/OnionApp/API/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/rubem/.nuget/NuGet/NuGet.Config"
@@ -6597,8 +6597,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "/home/rubem/Downloads/ddd-webapi-master/OnionApp/Application/Application.csproj": {
-              "projectPath": "/home/rubem/Downloads/ddd-webapi-master/OnionApp/Application/Application.csproj"
+            "/home/rubem/Downloads/OnionApp/OnionApp/Application/Application.csproj": {
+              "projectPath": "/home/rubem/Downloads/OnionApp/OnionApp/Application/Application.csproj"
             }
           }
         }
