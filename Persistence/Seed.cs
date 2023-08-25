@@ -35,7 +35,48 @@ namespace Persistence
             await context.SaveChangesAsync();
 
             if (context.Customer.Any()) return;
-            if (context.Product.Any()) return;
+            var customers = new List<Customer>
+            {
+                new Customer
+                {
+                    Id = "20297271059",
+                    Name = "Cliente1"
+                },
+                new Customer
+                {
+                    Id = "51739008065",
+                    Name = "Cliente2"
+                },
+                new Customer
+                {
+                    Id = "03232015042",
+                    Name = "Cliente3"
+                },
+                new Customer
+                {
+                    Id = "09983602016",
+                    Name = "Cliente4"
+                },
+                new Customer
+                {
+                    Id = "76420735009",
+                    Name = "Cliente5"
+                },
+                new Customer
+                {
+                    Id = "62729349049",
+                    Name = "Cliente6"
+                },
+                new Customer
+                {
+                    Id = "07088731037",
+                    Name = "Cliente7"
+                }
+            };
+
+            await context.Customer.AddRangeAsync(customers);
+            await context.SaveChangesAsync();
+
         }
     }
 }

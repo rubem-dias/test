@@ -6,7 +6,7 @@ using CsvHelper.Configuration.Attributes;
 
 namespace Domain.Models
 {
-    public class OrderInput
+    public class OrderFileInput
     {
         [Name("Documento")]
         public string Document { get; set; }

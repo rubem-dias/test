@@ -1,3 +1,4 @@
+using DocumentFormat.OpenXml.InkML;
 using Domain.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,5 +13,7 @@ namespace Persistence
         public DbSet<Customer> Customer { get; set; }
         public DbSet<Product> Product { get; set; }
         public DbSet<Order> Order { get; set; }
+
+
     }
 }

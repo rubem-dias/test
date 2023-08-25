@@ -1,18 +1,12 @@
 using Application.Services.Interfaces;
 using Domain.Models;
 using Persistence;
-using CsvHelper;
-using System.Globalization;
 using System.Text.Json;
 using AutoMapper;
-using CsvHelper.Configuration;
 using ClosedXML.Excel;
-using DocumentFormat.OpenXml.Packaging;
-using MMLib.Extensions;
 using Domain.Services.Interfaces;
-using Persistence.Http;
 using Persistence.Http.Interfaces;
-using DocumentFormat.OpenXml.InkML;
+using System.Net;
 
 namespace Application.Services
 {
@@ -33,10 +27,10 @@ namespace Application.Services
             _viaCep = viaCep;
         }
 
-        public async Task<List<OrderInput>> ImportOrders(MemoryStream fileStream)
+        public async Task<List<OrderFileInput>> ImportOrders(MemoryStream fileStream)
         {
 
-            List<OrderInput> OrderInputs = new List<OrderInput>();
+            List<OrderFileInput> OrderInputs = new List<OrderFileInput>();
 
             var xls = new XLWorkbook(fileStream);
             var sheet = xls.Worksheets.First();
@@ -44,7 +38,7 @@ namespace Application.Services
 
             for (int l = 2; l <= totalRow; l++)
             {
-                OrderInputs.Add(new OrderInput()
+                OrderInputs.Add(new OrderFileInput()
                 {
                     Document = NormalizeField(sheet.Cell($"A{l}").Value.ToString()),
                     CorporateName = NormalizeField(sheet.Cell($"B{l}").Value.ToString()),
@@ -68,9 +62,39 @@ namespace Application.Services
         
 
            var OrderChangedPrice = _budget.NewOrderValues(Orders, CompleteAddress, Products);
-           return null;
+           var OrdersWithDeliveryAndPrice = _delivery.OrdersWithDeliveryDate(OrderChangedPrice);
+
+            string DataToJson = JsonSerializer.Serialize(OrdersWithDeliveryAndPrice);
+            File.WriteAllText(@"/home/rubem/Downloads/ddd-webapi-master/OnionApp/Persistence/Mock/mock-newOrders.json", DataToJson);
+
+           return OrdersWithDeliveryAndPrice;
         }
 
+        public async Task<HttpStatusCode> PostOrder(List<Order> Orders)
+        {
+            try {
+                await _context.Order.AddRangeAsync(Orders);
+                await _context.SaveChangesAsync();
+
+                return HttpStatusCode.OK;
+            } catch (Exception)
+            {
+                return HttpStatusCode.NotModified;
+            }
+        }
+        
+        public async Task<List<Order>> GetOrders()
+        {
+            try 
+            {
+                var result =  _context.Order.ToList();
+                return result;
+            } catch (Exception ex)
+            {
+                throw new Exception(ex.Message, ex.InnerException);
+            }
+        }
+        
         protected string NormalizeField(string Field)
         {
             if (!String.IsNullOrEmpty(Field))

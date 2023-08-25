@@ -1,0 +1,2 @@
+dotnet ef migrations add InitialCreate -s API -p Persistence
+dotnet watch --no-hot-reload

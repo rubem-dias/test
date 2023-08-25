@@ -25,7 +25,7 @@ namespace API.Controllers
 
         [HttpPost("/ImportOrder")]
         [AllowAnonymous]
-        public async Task<ActionResult<List<Order>>> ImportOrder(IFormFile Orders) 
+        public async Task<IActionResult> ImportOrder(IFormFile Orders) 
         {
             _logger.LogInformation("Trying to post orders...");
 
@@ -38,9 +38,9 @@ namespace API.Controllers
                 await Orders.CopyToAsync(stream);
                 stream.Position = 0;
 
-                await _orderSerivice.ImportOrders(stream);
+                var result = await _orderSerivice.ImportOrders(stream);
 
-                return Ok();
+                return Ok(result);
 
             } catch (Exception e)
             {
@@ -50,7 +50,7 @@ namespace API.Controllers
 
         [HttpPost("/OrderHandler")]
         [AllowAnonymous]
-        public async Task<ActionResult<List<Order>>> OrderHandler(List<OrderInput> OrderInput) 
+        public async Task<IActionResult> OrderHandler(List<OrderFileInput> OrderFileInput) 
         {
             _logger.LogInformation("Trying to calculate orders...");
 
@@ -60,7 +60,7 @@ namespace API.Controllers
 
                 using StreamReader reader = new("/home/rubem/Downloads/ddd-webapi-master/OnionApp/Persistence/Mock/mock.json");
                 var json = reader.ReadToEnd();
-                List<OrderInput> Orders = JsonConvert.DeserializeObject<List<OrderInput>>(json);
+                List<OrderFileInput> Orders = JsonConvert.DeserializeObject<List<OrderFileInput>>(json);
 
                 foreach(var o in Orders)
                 {
@@ -75,10 +75,46 @@ namespace API.Controllers
                     });
                 }
 
-                await _orderSerivice.CalculateAndDeliveryDate(OrderList);
+                var result = await _orderSerivice.CalculateAndDeliveryDate(OrderList);
+
+                return Ok(result);
+
+            } catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
+        [HttpPost("/Post")]
+        [AllowAnonymous]
+        public async Task<IActionResult> ApproveOrders(List<Order> Order)
+
+        {
+            try 
+            {
+                using StreamReader reader = new("/home/rubem/Downloads/ddd-webapi-master/OnionApp/Persistence/Mock/mock-newOrders.json");
+                var json = reader.ReadToEnd();
+
+                List<Order> Orders = JsonConvert.DeserializeObject<List<Order>>(json);
+
+                var result = await _orderSerivice.PostOrder(Orders);
 
                 return Ok();
 
+            } catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        [HttpGet("/Get")]
+        [AllowAnonymous]
+        public async Task<List<Order>> GetOrders()
+        {
+            try
+            {
+                List<Order> result = await _orderSerivice.GetOrders();
+                return result;
             } catch (Exception e)
             {
                 throw new Exception(e.Message);

@@ -5,7 +5,7 @@ namespace Application.Services
 {
     public class OrderInputMapper : Profile
     {
-        public OrderInputMapper() => CreateMap<OrderInput, Order>()
+        public OrderInputMapper() => CreateMap<OrderFileInput, Order>()
             .ForMember(d => d.Id, o => o.Ignore())
             .ForMember(d => d.Document, o => o.MapFrom(s => s.Document))
             .ForMember(d => d.CorporateName, o => o.MapFrom(s => s.CorporateName))
