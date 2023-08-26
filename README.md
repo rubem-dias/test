@@ -15,6 +15,8 @@
     * http://localhost:5000/ApprovedOrders (POST)
     * http://localhost:5000/GetOrders (GET)
 
+    * http://localhost:5000/swagger/index.html
+
 # Caso de Uso
 
 1 - Escolher o arquivo desejado que tenha as mesmas colunas como o arquivo de exemplo enviado anteriormente.
@@ -50,6 +52,10 @@
 
 * Os dados das tabelas Product e Customer, foram salvos através de um Seed, de forma fixa, e os Pedidos, após a aprovação do usuário. Caminho até o banco: Persistence/Onion.db
 
-
-
+Caso desejar visualizar os dados, será necessário instalar SQLite.<br>
+#### Ubuntu 
+<code> sudo apt update </code> <br>
+<code> sudo apt install sqlite3 </code>
+#### Windows
+https://www.sqlitetutorial.net/download-install-sqlite/
 

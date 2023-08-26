@@ -34,6 +34,7 @@ function FileUpload() {
         }
       } catch (error) {
         console.error('Error uploading file:', error);
+        alert('Unable to upload file, verify your connection.', error)
       }
     }
   };

@@ -51,7 +51,7 @@ const TableComponent = () => {
             alert('Fail to calculate orders!')
           }
         } catch (error) {
-          console.error('Error uploading file:', error);
+            alert('Unable to approve Orders. Verify your connection', error)
         }
       };
 
@@ -91,6 +91,9 @@ const TableComponent = () => {
                 <button className='btn-approve' onClick={PostNewOrders}> Approve orders now! </button>
             </>
         );
+    } else 
+    {
+      return <h1 style={{textAlign: 'center'}}> Please, approve the orders first!</h1>
     }
 }
 

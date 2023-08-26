@@ -11,7 +11,7 @@ export default function Chart() {
           .get("http://localhost:5000/GetOrders")
           .then((res) => setOrder(res.data))
           .catch(err => {
-            console.log(err)
+            alert('Unable to fetch orders. Verify your connection', err)
       });
     }, []);
 
@@ -42,6 +42,8 @@ export default function Chart() {
     {
         return (
             <>
+                <h3 className='h3-dashboard'> Chart by customer and price with delivery</h3>
+
                 <ApexCharts
                     options={options}
                     series={series}
