@@ -11,6 +11,10 @@ using DocumentFormat.OpenXml.Office2021.PowerPoint.Tasks;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using MMLib.Extensions;
+using CsvHelper;
+using System.Globalization;
+using DocumentFormat.OpenXml.Spreadsheet;
+using DocumentFormat.OpenXml.Office2016.Excel;
 
 namespace Application.Services
 {
@@ -31,7 +35,18 @@ namespace Application.Services
             _viaCep = viaCep;
         }
 
-        public async Task<List<OrderFileInput>> ImportOrders(MemoryStream fileStream)
+        public async Task<List<OrderFileInput>> ImportOrders(MemoryStream fileStream, string fileName)
+        {
+            if (fileName.Contains("xlsx"))
+            {
+                return await ImportXlsx(fileStream);
+            } else
+            {
+                return await ImportCsv(fileStream);
+            }
+        }
+
+        protected async Task<List<OrderFileInput>> ImportXlsx(MemoryStream fileStream)
         {
 
             List<OrderFileInput> OrderInputs = new List<OrderFileInput>();
@@ -45,12 +60,48 @@ namespace Application.Services
                 OrderInputs.Add(new OrderFileInput()
                 {
                     Document = NormalizeField(sheet.Cell($"A{l}").Value.ToString(), "Documento"),
-                    CorporateName = NormalizeField(sheet.Cell($"B{l}").Value.ToString(),"Razão social"),
+                    CorporateName = NormalizeField(sheet.Cell($"B{l}").Value.ToString(), "Razão social"),
                     ZipCode = NormalizeField(sheet.Cell($"C{l}").Value.ToString(), "Cep"),
                     Product = NormalizeField(sheet.Cell($"D{l}").Value.ToString(), "Produto"),
                     OrderNumber = NormalizeField(sheet.Cell($"E{l}").Value.ToString(), "Número do pedido"),
                     DateOrdered = (DateTime)sheet.Cell($"F{l}").Value
                 });
+            }
+
+            return OrderInputs;
+        }
+
+        protected async Task<List<OrderFileInput>> ImportCsv(MemoryStream fileStream)
+        {
+            List<OrderFileInput> OrderInputs = new List<OrderFileInput>();
+
+            using (StreamReader sr = new StreamReader(fileStream))
+            {
+                string currentLine;
+                while ((currentLine = sr.ReadLine()) != null)
+                {
+                    if (currentLine.Contains("Documento,Razão Social,CEP,Produto,Número do pedido,Data"))
+                    {
+                        continue;
+                    }
+
+                    var fields = currentLine.Split(",");
+                    var BadDateTimeFormat = fields[5];
+
+                    var cultureInfo = new CultureInfo("pt-BR");
+                    var DateParsed = DateTime.Parse(BadDateTimeFormat, cultureInfo);
+
+                    OrderInputs.Add(new OrderFileInput()
+                    {
+                        Document = NormalizeField(fields[0], "Documento"),
+                        CorporateName = NormalizeField(fields[1], "Razão social"),
+                        ZipCode = NormalizeField(fields[2], "Cep"),
+                        Product = NormalizeField(fields[3], "Produto"),
+                        OrderNumber = NormalizeField(fields[4], "Número do pedido"),
+                        DateOrdered = DateParsed
+                    });
+
+                }
             }
 
             return OrderInputs;
@@ -100,12 +151,7 @@ namespace Application.Services
             Regex Reg = new Regex("[*'\",_&#^@]");
 
             if (!String.IsNullOrEmpty(Field))
-            {
-                Field = Field.Replace(".", string.Empty)
-                        .Replace("-", string.Empty)
-                        .TrimStart()
-                        .TrimEnd();
-                
+            {   
                 Field = Reg.Replace(Field, string.Empty);
             } else 
             { 
@@ -114,6 +160,5 @@ namespace Application.Services
 
             return Field;
         }
-
     }
 }

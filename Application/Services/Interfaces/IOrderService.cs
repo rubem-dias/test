@@ -9,7 +9,7 @@ namespace Application.Services.Interfaces
 {
     public interface IOrderService
     {
-        Task<List<OrderFileInput>> ImportOrders(MemoryStream fileStream);
+        Task<List<OrderFileInput>> ImportOrders(MemoryStream fileStream, string fileName);
         Task<List<Order>> CalculatePriceAndDeliveryDate(List<Order> OrderFileInput);
         Task<HttpStatusCode> PostOrder(List<Order> Orders);
         Task<List<Order>> GetOrders();

@@ -28,12 +28,14 @@ namespace API.Controllers
             {
                 if (Orders == null)
                     return BadRequest("File is empty");
-                
+
                 using MemoryStream stream = new MemoryStream();
                 await Orders.CopyToAsync(stream);
                 stream.Position = 0;
 
-                var result = await _orderSerivice.ImportOrders(stream);
+                var fileName = Orders.FileName;
+
+                var result = await _orderSerivice.ImportOrders(stream, fileName);
 
                 _logger.LogInformation("Import done!");
                 return Ok(result);
