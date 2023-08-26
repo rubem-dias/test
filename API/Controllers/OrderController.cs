@@ -1,13 +1,8 @@
 using Application.Services.Interfaces;
 using AutoMapper;
-using Domain;
 using Domain.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Storage;
-using Newtonsoft.Json;
-using Persistence;
 
 namespace API.Controllers
 {
