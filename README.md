@@ -19,7 +19,7 @@
 
 # Caso de Uso
 
-1 - Escolher o arquivo desejado que tenha as mesmas colunas como o arquivo de exemplo enviado anteriormente.
+1 - Escolher o arquivo desejado que tenha as mesmas colunas como o arquivo de exemplo enviado anteriormente. (.xlsx)
 
 2 - Fazer o Upload do arquivo, no botão "Upload".
 
