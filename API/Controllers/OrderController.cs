@@ -52,21 +52,7 @@ namespace API.Controllers
 
             try 
             {
-                List<Order> OrderList = new List<Order>();
-
-                foreach(var o in OrderFileInput)
-                {
-                    OrderList.Add(new Order() 
-                    {
-                        CorporateName = o.CorporateName,
-                        Document = o.Document,
-                        ZipCode = o.ZipCode,
-                        Product = o.Product,
-                        OrderNumber = o.OrderNumber,
-                        DateOrdered = o.DateOrdered
-                    });
-                }
-
+                var OrderList = _mapper.Map<List<Order>>(OrderFileInput);
                 var result = await _orderSerivice.CalculatePriceAndDeliveryDate(OrderList);
 
                 _logger.LogInformation("Order done!");

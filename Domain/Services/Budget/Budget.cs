@@ -8,7 +8,8 @@ namespace Domain.Services.Budget
         public double DeliveryDistanceMultiplier(string ZipCode)
         {
             int ZipCodeToCompare = Int32.Parse(ZipCode);
-            double multiplier = 0;
+
+            double multiplier;
 
             if (ZipCodeToCompare >= 01000000 && ZipCodeToCompare <= 39999999)
             {

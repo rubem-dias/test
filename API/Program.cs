@@ -20,7 +20,7 @@ builder.Services.AddTransient<IViaCep, ViaCep>();
 builder.Services.AddHttpClient();
 
 //Mappers
-builder.Services.AddAutoMapper(typeof(Order));
+builder.Services.AddAutoMapper(typeof(OrderInputMapper));
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -56,7 +56,6 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-// scoped: autodestroy when run again, and create another instance
 // setting all the migration to db
 using var scope = app.Services.CreateScope();
 var services = scope.ServiceProvider;

@@ -7,6 +7,10 @@ using ClosedXML.Excel;
 using Domain.Services.Interfaces;
 using Persistence.Http.Interfaces;
 using System.Net;
+using DocumentFormat.OpenXml.Office2021.PowerPoint.Tasks;
+using System.Reflection;
+using System.Text.RegularExpressions;
+using MMLib.Extensions;
 
 namespace Application.Services
 {
@@ -40,11 +44,11 @@ namespace Application.Services
             {
                 OrderInputs.Add(new OrderFileInput()
                 {
-                    Document = NormalizeField(sheet.Cell($"A{l}").Value.ToString()),
-                    CorporateName = NormalizeField(sheet.Cell($"B{l}").Value.ToString()),
-                    ZipCode = NormalizeField(sheet.Cell($"C{l}").Value.ToString()),
-                    Product = NormalizeField(sheet.Cell($"D{l}").Value.ToString()),
-                    OrderNumber = NormalizeField(sheet.Cell($"E{l}").Value.ToString()),
+                    Document = NormalizeField(sheet.Cell($"A{l}").Value.ToString(), "Documento"),
+                    CorporateName = NormalizeField(sheet.Cell($"B{l}").Value.ToString(),"Razão social"),
+                    ZipCode = NormalizeField(sheet.Cell($"C{l}").Value.ToString(), "Cep"),
+                    Product = NormalizeField(sheet.Cell($"D{l}").Value.ToString(), "Produto"),
+                    OrderNumber = NormalizeField(sheet.Cell($"E{l}").Value.ToString(), "Número do pedido"),
                     DateOrdered = (DateTime)sheet.Cell($"F{l}").Value
                 });
             }
@@ -91,15 +95,25 @@ namespace Application.Services
             }
         }
         
-        protected string NormalizeField(string Field)
+        protected string NormalizeField(string Field, string FieldName)
         {
+            Regex Reg = new Regex("[*'\",_&#^@]");
+
             if (!String.IsNullOrEmpty(Field))
+            {
                 Field = Field.Replace(".", string.Empty)
                         .Replace("-", string.Empty)
                         .TrimStart()
                         .TrimEnd();
+                
+                Field = Reg.Replace(Field, string.Empty);
+            } else 
+            { 
+              throw new Exception($"Field cannot be empty. Field empty: {FieldName}");
+            }
 
             return Field;
         }
+
     }
 }
