@@ -7,7 +7,7 @@ import Box from '@mui/material/Box';
 
 import FileUpload from './FileUpload';
 import TableComponent from './Orders';
-
+import Chart from './Chart';
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -63,10 +63,9 @@ export default function BasicTabs() {
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
         <TableComponent/>
-
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
-        Item Three
+        <Chart/>
       </CustomTabPanel>
     </Box>
   );

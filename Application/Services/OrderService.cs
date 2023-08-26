@@ -67,6 +67,7 @@ namespace Application.Services
         public async Task<HttpStatusCode> PostOrder(List<Order> Orders)
         {
             try {
+
                 await _context.Order.AddRangeAsync(Orders);
                 await _context.SaveChangesAsync();
 
@@ -81,8 +82,9 @@ namespace Application.Services
         {
             try 
             {
-                var result =  _context.Order.ToList();
+                var result =  _context.Order.OrderBy(x => x.CorporateName).ToList();
                 return result;
+
             } catch (Exception ex)
             {
                 throw new Exception(ex.Message, ex.InnerException);

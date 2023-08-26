@@ -40,6 +40,7 @@ namespace API.Controllers
 
                 var result = await _orderSerivice.ImportOrders(stream);
 
+                _logger.LogInformation("Import done!");
                 return Ok(result);
 
             } catch (Exception e)
@@ -73,6 +74,7 @@ namespace API.Controllers
 
                 var result = await _orderSerivice.CalculatePriceAndDeliveryDate(OrderList);
 
+                _logger.LogInformation("Order done!");
                 return Ok(result);
 
             } catch (Exception e)
@@ -89,6 +91,8 @@ namespace API.Controllers
             try 
             {
                 var result = await _orderSerivice.PostOrder(Orders);
+
+                _logger.LogInformation("Approved orders!");
                 return Ok();
 
             } catch (Exception ex)
@@ -97,7 +101,7 @@ namespace API.Controllers
             }
         }
 
-        [HttpGet]
+        [HttpGet("/GetOrders")]
         [AllowAnonymous]
         public async Task<List<Order>> GetOrders()
         {

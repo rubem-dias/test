@@ -16,8 +16,7 @@ function normalizeDateTime(date)
 
 function formatCurrencyBRL(price)
 {
-    var newPrice = Number(price.toFixed(4))
-    return `R$ ${newPrice}`
+    return `R$ ${price}`
 }
 
 const TableComponent = () => {

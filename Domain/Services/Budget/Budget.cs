@@ -84,26 +84,29 @@ namespace Domain.Services.Budget
                     var discount = product.Price * DiscountByDate;
                     var priceWithDiscount = product.Price - discount;
 
-                    if (MultiplierByLocation != 0)
-                    {
-                        var priceWithLocation = priceWithDiscount * MultiplierByLocation;
-                        var finalPrice = product.Price = priceWithLocation;
+                    order.PriceWithDelivery = priceWithDiscount * MultiplierByLocation;
+                    order.PriceWithoutDelivery = priceWithDiscount;
 
-                        order.PriceWithoutDelivery = product.Price;
-                        order.PriceWithDelivery = finalPrice;
-                    }
-                } else if (DiscountByDate == 0 && MultiplierByLocation != 0)
+                } else
                 {
                     order.PriceWithDelivery = product.Price * MultiplierByLocation;
                     order.PriceWithoutDelivery = product.Price;
-                } else 
-                {
-                    order.PriceWithDelivery = product.Price;
-                    order.PriceWithoutDelivery = product.Price;
                 }
+
+                order.PriceWithDelivery = ClearTrailingZeros(order.PriceWithDelivery);
+                order.PriceWithoutDelivery = ClearTrailingZeros(order.PriceWithoutDelivery);
             }
 
             return OrderList;
         }
+
+        protected double ClearTrailingZeros(double Price)
+        {
+            string strNumber = Price.ToString("N2");
+            double newPriceFormatted = Convert.ToDouble(strNumber);
+
+            return newPriceFormatted;
+        }
+
     }
 }
