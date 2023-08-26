@@ -46,7 +46,7 @@ const TableComponent = () => {
           });
     
           if (response.status === 200) {
-            alert('Success to calculate orders! Check out the Orders tab!')
+            alert('Success to calculate orders! Check Dashboard tab to see your orders!')
           } else {
             alert('Fail to calculate orders!')
           }
