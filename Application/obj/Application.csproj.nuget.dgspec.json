@@ -1,36 +1,38 @@
 {
   "format": 1,
   "restore": {
-    "/home/rubem/Downloads/OnionApp/OnionApp/Application/Application.csproj": {}
+    "C:\\Users\\rubem\\source\\repos\\test\\Application\\Application.csproj": {}
   },
   "projects": {
-    "/home/rubem/Downloads/OnionApp/OnionApp/Application/Application.csproj": {
+    "C:\\Users\\rubem\\source\\repos\\test\\Application\\Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/rubem/Downloads/OnionApp/OnionApp/Application/Application.csproj",
+        "projectUniqueName": "C:\\Users\\rubem\\source\\repos\\test\\Application\\Application.csproj",
         "projectName": "Application",
-        "projectPath": "/home/rubem/Downloads/OnionApp/OnionApp/Application/Application.csproj",
-        "packagesPath": "/home/rubem/.nuget/packages/",
-        "outputPath": "/home/rubem/Downloads/OnionApp/OnionApp/Application/obj/",
+        "projectPath": "C:\\Users\\rubem\\source\\repos\\test\\Application\\Application.csproj",
+        "packagesPath": "C:\\Users\\rubem\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\rubem\\source\\repos\\test\\Application\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/rubem/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\rubem\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "/home/rubem/Downloads/OnionApp/OnionApp/Domain/Domain.csproj": {
-                "projectPath": "/home/rubem/Downloads/OnionApp/OnionApp/Domain/Domain.csproj"
+              "C:\\Users\\rubem\\source\\repos\\test\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\rubem\\source\\repos\\test\\Domain\\Domain.csproj"
               },
-              "/home/rubem/Downloads/OnionApp/OnionApp/Persistence/Persistence.csproj": {
-                "projectPath": "/home/rubem/Downloads/OnionApp/OnionApp/Persistence/Persistence.csproj"
+              "C:\\Users\\rubem\\source\\repos\\test\\Persistence\\Persistence.csproj": {
+                "projectPath": "C:\\Users\\rubem\\source\\repos\\test\\Persistence\\Persistence.csproj"
               }
             }
           }
@@ -80,7 +82,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -89,26 +92,28 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/6.0.121/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/home/rubem/Downloads/OnionApp/OnionApp/Domain/Domain.csproj": {
+    "C:\\Users\\rubem\\source\\repos\\test\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/rubem/Downloads/OnionApp/OnionApp/Domain/Domain.csproj",
+        "projectUniqueName": "C:\\Users\\rubem\\source\\repos\\test\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "/home/rubem/Downloads/OnionApp/OnionApp/Domain/Domain.csproj",
-        "packagesPath": "/home/rubem/.nuget/packages/",
-        "outputPath": "/home/rubem/Downloads/OnionApp/OnionApp/Domain/obj/",
+        "projectPath": "C:\\Users\\rubem\\source\\repos\\test\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\rubem\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\rubem\\source\\repos\\test\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/rubem/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\rubem\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -158,7 +163,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -167,34 +173,36 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/6.0.121/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/home/rubem/Downloads/OnionApp/OnionApp/Persistence/Persistence.csproj": {
+    "C:\\Users\\rubem\\source\\repos\\test\\Persistence\\Persistence.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/rubem/Downloads/OnionApp/OnionApp/Persistence/Persistence.csproj",
+        "projectUniqueName": "C:\\Users\\rubem\\source\\repos\\test\\Persistence\\Persistence.csproj",
         "projectName": "Persistence",
-        "projectPath": "/home/rubem/Downloads/OnionApp/OnionApp/Persistence/Persistence.csproj",
-        "packagesPath": "/home/rubem/.nuget/packages/",
-        "outputPath": "/home/rubem/Downloads/OnionApp/OnionApp/Persistence/obj/",
+        "projectPath": "C:\\Users\\rubem\\source\\repos\\test\\Persistence\\Persistence.csproj",
+        "packagesPath": "C:\\Users\\rubem\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\rubem\\source\\repos\\test\\Persistence\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/rubem/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\rubem\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "/home/rubem/Downloads/OnionApp/OnionApp/Domain/Domain.csproj": {
-                "projectPath": "/home/rubem/Downloads/OnionApp/OnionApp/Domain/Domain.csproj"
+              "C:\\Users\\rubem\\source\\repos\\test\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\rubem\\source\\repos\\test\\Domain\\Domain.csproj"
               }
             }
           }
@@ -252,7 +260,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -261,7 +270,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/6.0.121/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

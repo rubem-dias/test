@@ -34,3 +34,15 @@
 /home/rubem/Downloads/OnionApp/OnionApp/Domain/obj/Debug/net6.0/Domain.dll
 /home/rubem/Downloads/OnionApp/OnionApp/Domain/obj/Debug/net6.0/ref/Domain.dll
 /home/rubem/Downloads/OnionApp/OnionApp/Domain/obj/Debug/net6.0/Domain.pdb
+C:\Users\rubem\source\repos\test\Domain\bin\Debug\net6.0\Domain.deps.json
+C:\Users\rubem\source\repos\test\Domain\bin\Debug\net6.0\Domain.dll
+C:\Users\rubem\source\repos\test\Domain\bin\Debug\net6.0\Domain.pdb
+C:\Users\rubem\source\repos\test\Domain\obj\Debug\net6.0\Domain.csproj.AssemblyReference.cache
+C:\Users\rubem\source\repos\test\Domain\obj\Debug\net6.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rubem\source\repos\test\Domain\obj\Debug\net6.0\Domain.AssemblyInfoInputs.cache
+C:\Users\rubem\source\repos\test\Domain\obj\Debug\net6.0\Domain.AssemblyInfo.cs
+C:\Users\rubem\source\repos\test\Domain\obj\Debug\net6.0\Domain.csproj.CoreCompileInputs.cache
+C:\Users\rubem\source\repos\test\Domain\obj\Debug\net6.0\Domain.dll
+C:\Users\rubem\source\repos\test\Domain\obj\Debug\net6.0\refint\Domain.dll
+C:\Users\rubem\source\repos\test\Domain\obj\Debug\net6.0\Domain.pdb
+C:\Users\rubem\source\repos\test\Domain\obj\Debug\net6.0\ref\Domain.dll

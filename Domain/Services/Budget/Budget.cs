@@ -5,9 +5,9 @@ namespace Domain.Services.Budget
 {
     public class Budget : IBudget
     {
-        public double DeliveryDistanceMultiplier(Order Order, CepResponse Cep)
+        public double DeliveryDistanceMultiplier(string ZipCode)
         {
-            int ZipCodeToCompare = Int32.Parse(Order.ZipCode);
+            int ZipCodeToCompare = Int32.Parse(ZipCode);
             double multiplier = 0;
 
             if (ZipCodeToCompare >= 01000000 && ZipCodeToCompare <= 39999999)
@@ -23,42 +23,22 @@ namespace Domain.Services.Budget
             return multiplier;
         }
 
-        public double DiscountDates(Order Order)
+        public double DiscountDates(DateTime OrderDate)
         {
 
             double Percentage = 0;
-
-            List<DateTime> Christmas = Enumerable.Range(0, Int32.MaxValue)
-                .Select(e => new DateTime(Order.DateOrdered.Year, 12, 1).AddDays(1))
-                .TakeWhile(e => new DateTime(Order.DateOrdered.Year, 12, 31) <= e)
-                .ToList();
-
-            List<DateTime> BlackFriday = Enumerable.Range(0, Int32.MaxValue)
-                .Select(e => new DateTime(Order.DateOrdered.Year, 11, 25).AddDays(1))
-                .TakeWhile(e => new DateTime(Order.DateOrdered.Year, 11, 30) <= e)
-                .ToList();
-
-            List<DateTime> FathersDay = Enumerable.Range(0, Int32.MaxValue)
-                .Select(e => new DateTime(Order.DateOrdered.Year, 8, 1).AddDays(1))
-                .TakeWhile(e => new DateTime(Order.DateOrdered.Year, 8, 15) <= e)
-                .ToList();
-
-            List<DateTime> MothersDay = Enumerable.Range(0, Int32.MaxValue)
-                .Select(e => new DateTime(Order.DateOrdered.Year, 5, 1).AddDays(1))
-                .TakeWhile(e => new DateTime(Order.DateOrdered.Year, 5, 15) <= e)
-                .ToList();
             
-            if (Order.DateOrdered >= Christmas.FirstOrDefault() && Order.DateOrdered <= Christmas.LastOrDefault())
+            if (OrderDate >= new DateTime(OrderDate.Year, 12, 1) && OrderDate <= new DateTime(OrderDate.Year, 12, 31))
             {
                 Percentage = 0.10;
             }
-            else if (Order.DateOrdered >= BlackFriday.FirstOrDefault() && Order.DateOrdered <= BlackFriday.LastOrDefault())
+            else if (OrderDate >= new DateTime(OrderDate.Year, 11, 25) && OrderDate <= new DateTime(OrderDate.Year, 11, 30))
             {
                 Percentage = 0.30;
-            } else if (Order.DateOrdered >= FathersDay.FirstOrDefault() && Order.DateOrdered <= FathersDay.LastOrDefault())
+            } else if (OrderDate >= new DateTime(OrderDate.Year, 8, 1) && OrderDate <= new DateTime(OrderDate.Year, 8, 15))
             {
                 Percentage = 0.05;
-            } else if (Order.DateOrdered >= MothersDay.FirstOrDefault() && Order.DateOrdered <= MothersDay.LastOrDefault())
+            } else if (OrderDate >= new DateTime(OrderDate.Year, 5, 1) && OrderDate <= new DateTime(OrderDate.Year, 5, 15))
             {
                 Percentage = 0.05;
             } else 
@@ -76,8 +56,8 @@ namespace Domain.Services.Budget
                 var cep = Cep.Where(x => x.Cep.Replace("-", string.Empty) == order.ZipCode).FirstOrDefault();
                 var product = Products.Where(x => x.Name == order.Product).FirstOrDefault();
 
-                var MultiplierByLocation = DeliveryDistanceMultiplier(order, cep);
-                var DiscountByDate = DiscountDates(order);
+                var MultiplierByLocation = DeliveryDistanceMultiplier(order.ZipCode);
+                var DiscountByDate = DiscountDates(order.DateOrdered);
 
                 if (DiscountByDate != 0)
                 {

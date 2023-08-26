@@ -45,40 +45,23 @@ namespace Domain.Services.Delivery
 
             int UtilDaysCount;
 
-            List<DateTime> Christmas = Enumerable.Range(0, Int32.MaxValue)
-                .Select(e => new DateTime(OrderedDate.Year, 12, 1).AddDays(1))
-                .TakeWhile(e => new DateTime(OrderedDate.Year, 12, 31) <= e)
-                .ToList();
-
-            List<DateTime> BlackFriday = Enumerable.Range(0, Int32.MaxValue)
-                .Select(e => new DateTime(OrderedDate.Year, 11, 25).AddDays(1))
-                .TakeWhile(e => new DateTime(OrderedDate.Year, 11, 30) <= e)
-                .ToList();
-
-            List<DateTime> FathersDay = Enumerable.Range(0, Int32.MaxValue)
-                .Select(e => new DateTime(OrderedDate.Year, 8, 1).AddDays(1))
-                .TakeWhile(e => new DateTime(OrderedDate.Year, 8, 15) <= e)
-                .ToList();
-
-            List<DateTime> MothersDay = Enumerable.Range(0, Int32.MaxValue)
-                .Select(e => new DateTime(OrderedDate.Year, 5, 1).AddDays(1))
-                .TakeWhile(e => new DateTime(OrderedDate.Year, 5, 15) <= e)
-                .ToList();
-            
-            if (OrderedDate >= Christmas.FirstOrDefault() && OrderedDate <= Christmas.LastOrDefault())
+            if (OrderedDate >= new DateTime(OrderedDate.Year, 12, 1) && OrderedDate <= new DateTime(OrderedDate.Year, 12, 31))
             {
                 UtilDaysCount = 10;
             }
-            else if (OrderedDate >= BlackFriday.FirstOrDefault() && OrderedDate <= BlackFriday.LastOrDefault())
+            else if (OrderedDate >= new DateTime(OrderedDate.Year, 11, 25) && OrderedDate <= new DateTime(OrderedDate.Year, 11, 30))
             {
                 UtilDaysCount = 15;
-            } else if (OrderedDate >= FathersDay.FirstOrDefault() && OrderedDate <= FathersDay.LastOrDefault())
+            }
+            else if (OrderedDate >= new DateTime(OrderedDate.Year, 8, 1) && OrderedDate <= new DateTime(OrderedDate.Year, 8, 15))
             {
                 UtilDaysCount = 3;
-            } else if (OrderedDate >= MothersDay.FirstOrDefault() && OrderedDate <= MothersDay.LastOrDefault())
+            }
+            else if (OrderedDate >= new DateTime(OrderedDate.Year, 5, 1) && OrderedDate <= new DateTime(OrderedDate.Year, 5, 15))
             {
                 UtilDaysCount = 3;
-            } else 
+            }
+            else
             {
                 return 0;
             }
