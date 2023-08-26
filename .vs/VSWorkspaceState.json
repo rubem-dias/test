@@ -1,10 +1,7 @@
 {
   "ExpandedNodes": [
     "",
-    "\\API",
-    "\\Application",
     "\\Application\\Services"
   ],
-  "SelectedNode": "\\Application\\Services\\OrderService.cs",
   "PreviewInSolutionExplorer": false
 }
